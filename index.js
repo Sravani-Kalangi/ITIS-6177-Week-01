@@ -1,9 +1,13 @@
-const http = require('http');
+const express = require('express')
 
-const requestListener = function (req, res) {
-  res.writeHead(200);
-  res.end('Hello, World!');
-}
+const app = express();
 
-const server = http.createServer(requestListener);
-server.listen(3000);
+app.get('/',(req,res)=>{
+    res.send('Hello World!')
+});
+
+const port = process.env.port || 3000
+
+app.listen(port,()=>{
+    console.log(`app is listening on http://localhost:${port}`)
+})
